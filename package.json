@@ -16,7 +16,7 @@
     "storybook:build:run": "npx serve dist/storybook/eternal",
     "build": "env-cmd ng build --stats-json",
     "test": "nx test",
-    "test:watch": "nx test --watch",
+    "test:watch": "nx test --watch --detect-open-handles",
     "test:vr": "jest --config jest.config-vr.js",
     "test:vr:watch": "jest --config jest.config-vr.js --watch",
     "test:playwright": "playwright test playwright.spec.ts",
