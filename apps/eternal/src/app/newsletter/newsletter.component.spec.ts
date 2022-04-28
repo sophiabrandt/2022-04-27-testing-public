@@ -1,8 +1,8 @@
 import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NewsletterComponent } from './newsletter.component';
+import { NewsletterComponentModule } from './newsletter.component.module';
 
 describe('NewsletterComponent', () => {
   let component: NewsletterComponent;
@@ -10,8 +10,7 @@ describe('NewsletterComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewsletterComponent],
-      imports: [ReactiveFormsModule],
+      imports: [NewsletterComponentModule],
       providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
     });
     fixture = TestBed.createComponent(NewsletterComponent);

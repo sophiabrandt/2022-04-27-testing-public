@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { fakeAsync } from '@angular/core/testing';
 import { createSpyFromClass } from 'jest-auto-spies';
 import { asyncScheduler, firstValueFrom, of, scheduled } from 'rxjs';
+import { marbles } from 'rxjs-marbles/jest';
 import { AddressLookuper } from './address-lookuper.service';
 import { assertType } from './assert-type';
 
@@ -46,4 +47,16 @@ describe('Address Lookuper', () => {
       'Could not parse address. Invalid format.'
     );
   });
+
+  it(
+    'should use rxjs-marbles',
+    marbles((m) => {
+      const httpClientStub = assertType<HttpClient>({
+        get: () => m.cold('750ms a', { a: [true] })
+      });
+
+      const lookuper = new AddressLookuper(httpClientStub);
+      m.expect(lookuper.lookup('Domgasse 5')).toBeObservable('750ms b', { b: true });
+    })
+  );
 });
