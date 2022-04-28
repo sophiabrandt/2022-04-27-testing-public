@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { AddressLookuper } from '../../shared/address-lookuper.service';
 
 @Component({
   selector: 'app-request-info',
@@ -15,9 +16,8 @@ export class RequestInfoComponent implements OnInit {
   @Input() address = '';
   submitter$ = new Subject<void>();
   lookupResult$: Observable<string> | undefined;
-  lookuper = { lookup: (address: string) => of(false) };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private lookuper: AddressLookuper) {}
 
   ngOnInit(): void {
     if (this.address) {
