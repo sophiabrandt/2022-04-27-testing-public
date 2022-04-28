@@ -1,6 +1,6 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { fakeAsync } from '@angular/core/testing';
-import { createComponentFactory } from '@ngneat/spectator/jest';
+import { byTestId, createComponentFactory } from '@ngneat/spectator/jest';
 import { asyncScheduler, scheduled } from 'rxjs';
 import { AddressLookuper } from '../../shared/address-lookuper.service';
 import { RequestInfoComponent } from './request-info.component';
@@ -9,7 +9,7 @@ import { RequestInfoComponentModule } from './request-info.component.module';
 describe('Request Info Spectator', () => {
   const inputSelector = '[data-testid=address]';
   const buttonSelector = '[data-testid=btn-search]';
-  const lookupSelector = '[data-testid=lookup-result]';
+  const lookupSelector = byTestId('lookup-result');
 
   describe('Component Test', () => {
     const createComponent = createComponentFactory({

@@ -26,7 +26,7 @@ describe('Request Info with Testing Library', () => {
       { input: 'Domgasse 5', message: 'Brochure sent' },
       { input: 'Domgasse 15', message: 'Address not found' }
     ])('should show $message for $input', async ({ input, message }) => {
-      await setup();
+      const renderResult = await setup();
       const lookuper = TestBed.inject(AddressLookuper);
       jest
         .spyOn(lookuper, 'lookup')
@@ -34,7 +34,7 @@ describe('Request Info with Testing Library', () => {
 
       userEvent.type(screen.getByTestId('address'), input);
       userEvent.click(screen.getByTestId('btn-search'));
-
+      screen.logTestingPlaygroundURL();
       expect(await screen.findByText(message)).toBeTruthy();
     });
   });
