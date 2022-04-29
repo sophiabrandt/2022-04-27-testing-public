@@ -10,6 +10,7 @@
   "videosFolder": "../../dist/cypress/apps/eternal-e2e/videos",
   "screenshotsFolder": "../../dist/cypress/apps/eternal-e2e/screenshots",
   "chromeWebSecurity": false,
+  "experimentalSessionAndOrigin": true,
   "env": {
     "apiUrl": "https://api.eternal-holidays.net"
   }
